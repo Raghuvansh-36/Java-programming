@@ -11,18 +11,18 @@ public class guessTheNumber{
         void guessNumber(){
             Random rand = new Random();
             this.number = rand.nextInt(100);
-            //return number;
         }
         
-        int takeInputNumber(){
+        void takeInputNumber(){
             Scanner sc = new Scanner(System.in);
-            System.out.println("Enter any number between 1 & 100:");
-            inputNumber = sc.nextInt();
-            sc.close();
-            return inputNumber;
+            try {
+                System.out.println("Enter any number between 1 & 100:");
+                inputNumber = sc.nextInt();
+            } catch (Exception e) {
+                System.out.println(e);
+            }
         }
 
-        
         boolean toCheckNumber(){
             noOfGuesses++;
             if(inputNumber == number){
@@ -40,13 +40,9 @@ public class guessTheNumber{
         public void setNoOfGuesses(int noOfGuesses) {
             this.noOfGuesses = noOfGuesses;
         }
-        int getNoOfGuesses() {
-            return noOfGuesses;
-        }
     }
+    
     public static void main(String[] args){
-        
-        
         Game g = new Game();
         g.guessNumber();
         boolean b = false;
@@ -54,6 +50,5 @@ public class guessTheNumber{
             g.takeInputNumber();
             b = g.toCheckNumber();
         }
-
     }
 }
